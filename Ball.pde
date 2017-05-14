@@ -29,18 +29,28 @@ public class Ball {
       ycor -= ymvmt;
       ymvmt *= -1;
     }
+    checkForCollision(balls);
   }
 
   void grow() {
-    radius += 5; 
+    radius += 2; 
     if (radius >= 100) {
       state = 2;
     }
   }
   void shrink() {
-    radius -= 5;
+    radius -= 2;
     if (radius <= 0) {
       state = 3;
+    }
+  }
+  void checkForCollision( ArrayList<Ball> AL) {
+    for (int i = 0; i < AL.size(); i++) {
+      if (AL.get(i).state!= 0) {
+        if (distance(xcor, ycor, AL.get(i).xcor, AL.get(i).ycor) <= radius+AL.get(i).radius) {
+          state = 1;
+        }
+      }
     }
   }
 
@@ -54,5 +64,4 @@ public class Ball {
     }
     display();
   }
-  
 }

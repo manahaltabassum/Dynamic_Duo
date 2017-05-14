@@ -1,29 +1,27 @@
-Ball[] arr;
+ArrayList<Ball> balls;
 boolean reactStart;
 
 void setup() {
   size(600, 600);
   reactStart =false;
-  arr = new Ball[20];
-  for (int i = 0; i < arr.length; i++) {
-    arr[i] = new Ball();
+  balls = new ArrayList<Ball>();
+  for (int i = 0; i < 20; i++) {
+    balls.add(new Ball());
   }
 }
 
 void draw() {
   background(0);
-  for (int i = 0; i < arr.length; i++) {
-    arr[i].run();
+  for (int i = 0; i <balls.size(); i++) {
+    balls.get(i).run();
   }
   checkForDead();
 }
 
 void checkForDead() {
-  for (int i = arr.length-1; i >= 0; i--) {
-    if (arr[i] != null) {
-      if (arr[i].state == 3 ) {
-        arr[i] = null;
-      }
+  for (int i = balls.size()-1; i >= 0; i--) {
+    if (balls.get(i).state == 3 ) {
+      balls.remove(i);
     }
   }
 }
@@ -34,9 +32,9 @@ double distance( int ballx, int bally, int mousex, int mousey) {
 
 void mouseClicked() {
   reactStart = true;
-  for (int i = 0; i < arr.length; i++) {
-    if ((int)distance(arr[i].xcor, arr[i].ycor, mouseX, mouseY) <= arr[i].radius*2) {
-      arr[i].state = 1;
+  for (int i = 0; i < balls.size(); i++) {
+    if ((int)distance(balls.get(i).xcor, balls.get(i).ycor, mouseX, mouseY) <= balls.get(i).radius*1.5) {
+      balls.get(i).state = 1;
     }
   }
 }
