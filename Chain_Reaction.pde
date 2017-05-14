@@ -2,6 +2,7 @@ ArrayList<Ball> balls;
 boolean reactStart;
 
 void setup() {
+  frameRate(5);
   size(600, 600);
   reactStart =false;
   balls = new ArrayList<Ball>();
@@ -27,7 +28,7 @@ void checkForDead() {
 }
 
 double distance( int ballx, int bally, int mousex, int mousey) {
-  return (double)Math.sqrt((Math.pow(ballx, 2) - Math.pow(mousex, 2)) + (Math.pow(bally, 2) - Math.pow(mousey, 2)));
+  return (double)Math.sqrt((Math.pow(ballx - mousex, 2)) + (Math.pow(bally - mousey, 2)));
 }
 
 void mouseClicked() {

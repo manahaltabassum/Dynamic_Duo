@@ -46,7 +46,7 @@ public class Ball {
   }
   void checkForCollision( ArrayList<Ball> AL) {
     for (int i = 0; i < AL.size(); i++) {
-      if (AL.get(i).state!= 0) {
+      if (AL.get(i).state!= 0 && AL.get(i).state!=3) {
         if (distance(xcor, ycor, AL.get(i).xcor, AL.get(i).ycor) <= radius+AL.get(i).radius) {
           state = 1;
         }
