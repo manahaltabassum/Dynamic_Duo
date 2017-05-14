@@ -2,7 +2,6 @@ ArrayList<Ball> balls;
 boolean reactStart;
 
 void setup() {
-  frameRate(5);
   size(600, 600);
   reactStart =false;
   balls = new ArrayList<Ball>();
